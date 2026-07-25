@@ -1,0 +1,32 @@
+backend = "xrender";
+vsync = false;
+
+# Rounded windows
+corner-radius = 12;
+
+# Shadows
+shadow = true;
+shadow-radius = 18;
+shadow-opacity = 0.35;
+shadow-offset-x = -7;
+shadow-offset-y = -7;
+
+# Glass blur
+# blur-method = "dual_kawase";
+# blur-strength = 5;
+
+# blur-background = true;
+# blur-background-frame = true;
+
+# Smooth fading
+fading = true;
+fade-in-step = 0.04;
+fade-out-step = 0.04;
+fade-delta = 5;
+
+# Keep menus and panels usable
+opacity-rule = [
+    "65:class_g = 'kitty'",
+    "65:class_g = 'Rofi'",
+    "65:class_g = 'Polybar'"
+];

@@ -1,0 +1,45 @@
+# Virtual machines and disk images
+*.vdi
+*.vmdk
+*.vhd
+*.vhdx
+*.qcow2
+*.ova
+*.ovf
+*.img
+*.iso
+
+# Personal credentials and secrets
+.ssh/
+.gnupg/
+*.pem
+*.key
+*.p12
+*.pfx
+credentials
+credentials.*
+secrets
+secrets.*
+.env
+.env.*
+
+# User data
+.cache/
+.local/share/keyrings/
+.mozilla/
+.config/discord/
+.config/Signal/
+.zsh_history
+.bash_history
+
+# System identity and credentials
+machine-id
+shadow
+gshadow
+NetworkManager/system-connections/
+
+# Temporary editor files
+*.swp
+*.swo
+*~
+.DS_Store

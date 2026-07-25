@@ -1,0 +1,3 @@
+blackarch-menus
+blackarch-mirrorlist
+yay

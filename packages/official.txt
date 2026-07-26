@@ -58,6 +58,9 @@ pipewire-jack
 pipewire-pulse
 power-profiles-daemon
 python-pip
+qt6-multimedia
+qt6-svg
+qt6-virtualkeyboard
 reflector
 ripgrep
 rsync

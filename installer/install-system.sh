@@ -77,4 +77,79 @@ install_file \
     "$SDDM_CONFIG_DEST/display.conf"
 
 echo
+echo "Configuring NomadOS GRUB background..."
+
+GRUB_IMAGE_SOURCE="$REPO_DIR/assets/grub/Snufkin.png"
+GRUB_CONFIG_SOURCE="$REPO_DIR/system/grub/background.conf"
+
+GRUB_IMAGE_DEST="$(
+    destination_path "/boot/grub/backgrounds/Snufkin.png"
+)"
+
+GRUB_DEFAULT_DEST="$(
+    destination_path "/etc/default/grub"
+)"
+
+if [[ ! -f "$GRUB_IMAGE_SOURCE" ]]; then
+    echo "Missing GRUB image: $GRUB_IMAGE_SOURCE" >&2
+    exit 1
+fi
+
+if [[ ! -f "$GRUB_CONFIG_SOURCE" ]]; then
+    echo "Missing GRUB configuration fragment: $GRUB_CONFIG_SOURCE" >&2
+    exit 1
+fi
+
+if [[ ! -f "$GRUB_DEFAULT_DEST" ]]; then
+    echo "Missing GRUB defaults file: $GRUB_DEFAULT_DEST" >&2
+    exit 1
+fi
+
+install_file \
+    "$GRUB_IMAGE_SOURCE" \
+    "$GRUB_IMAGE_DEST"
+
+sed -i -E \
+    '/^[[:space:]]*GRUB_(BACKGROUND|THEME)=/d' \
+    "$GRUB_DEFAULT_DEST"
+
+printf '\n' >> "$GRUB_DEFAULT_DEST"
+cat "$GRUB_CONFIG_SOURCE" >> "$GRUB_DEFAULT_DEST"
+printf '\n' >> "$GRUB_DEFAULT_DEST"
+
+echo "Configured: $GRUB_DEFAULT_DEST"
+echo "GRUB background: /boot/grub/backgrounds/Snufkin.png"
+
+if [[ "$ROOT_DIR" == "/" ]]; then
+    if (( EUID != 0 )); then
+        echo "Root privileges are required to regenerate GRUB." >&2
+        exit 1
+    fi
+
+    if ! command -v grub-mkconfig >/dev/null 2>&1; then
+        echo "grub-mkconfig is unavailable." >&2
+        exit 1
+    fi
+
+    grub-mkconfig -o /boot/grub/grub.cfg
+
+elif [[ -x "$ROOT_DIR/usr/bin/grub-mkconfig" ]]; then
+    if (( EUID != 0 )); then
+        echo "Root privileges are required for the target system." >&2
+        exit 1
+    fi
+
+    if ! command -v arch-chroot >/dev/null 2>&1; then
+        echo "arch-chroot is required to regenerate target GRUB." >&2
+        exit 1
+    fi
+
+    arch-chroot "$ROOT_DIR" \
+        grub-mkconfig -o /boot/grub/grub.cfg
+else
+    echo "Filesystem-only test detected."
+    echo "GRUB files were configured, but grub-mkconfig was skipped."
+fi
+
+echo
 echo "NomadOS system files installed successfully."

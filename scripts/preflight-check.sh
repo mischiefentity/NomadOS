@@ -45,6 +45,8 @@ required_files=(
     "system/pacman/usr/share/pacman/keyrings/blackarch-trusted"
     "system/pacman/usr/share/pacman/keyrings/blackarch-revoked"
     "assets/wallpapers/nomados-wallpaper.png"
+    "assets/grub/Snufkin.png"
+    "system/grub/background.conf"
     "inventory/environment.txt"
 )
 

@@ -741,8 +741,13 @@ client.connect_signal("request::titlebars", function(c)
 
 end)
 
--- Start VirtualBox shared clipboard automatically 
-awful.spawn.once("VBoxClient --clipboard")
+-- Start VirtualBox shared clipboard only inside VirtualBox
+awful.spawn.with_shell(
+    "if command -v VBoxClient >/dev/null 2>&1 && " ..
+    "[ \"$(systemd-detect-virt 2>/dev/null)\" = \"oracle\" ]; then " ..
+    "pgrep -f '[V]BoxClient --clipboard' >/dev/null || VBoxClient --clipboard; " ..
+    "fi"
+)
 
 -- Restores feh wallpaper after reboot
 awful.spawn.with_shell(os.getenv("HOME") .. "/.fehbg")

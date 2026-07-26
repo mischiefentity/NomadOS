@@ -1,0 +1,28 @@
+TARGET                                        SOURCE            FSTYPE      OPTIONS
+/                                             /dev/sda2[/@]     btrfs       rw,relatime,compress=zstd:3,space_cache=v2,subvolid=256,subvol=/@
+├─/proc                                       proc              proc        rw,nosuid,nodev,noexec,relatime
+│ └─/proc/sys/fs/binfmt_misc                  systemd-1         autofs      rw,relatime,fd=44,pgrp=1,timeout=0,minproto=5,maxproto=5,direct,pipe_ino=4946
+│   └─/proc/sys/fs/binfmt_misc                binfmt_misc       binfmt_misc rw,nosuid,nodev,noexec,relatime
+├─/sys                                        sys               sysfs       rw,nosuid,nodev,noexec,relatime
+│ ├─/sys/kernel/security                      securityfs        securityfs  rw,nosuid,nodev,noexec,relatime
+│ ├─/sys/fs/cgroup                            cgroup2           cgroup2     rw,nosuid,nodev,noexec,relatime,nsdelegate,memory_recursiveprot,memory_hugetlb_accounting
+│ ├─/sys/fs/pstore                            none              pstore      rw,nosuid,nodev,noexec,relatime
+│ ├─/sys/fs/bpf                               bpf               bpf         rw,nosuid,nodev,noexec,relatime,mode=700
+│ ├─/sys/kernel/config                        configfs          configfs    rw,nosuid,nodev,noexec,relatime
+│ ├─/sys/fs/fuse/connections                  fusectl           fusectl     rw,nosuid,nodev,noexec,relatime
+│ ├─/sys/kernel/tracing                       tracefs           tracefs     rw,nosuid,nodev,noexec,relatime
+│ └─/sys/kernel/debug                         debugfs           debugfs     rw,nosuid,nodev,noexec,relatime
+├─/dev                                        dev               devtmpfs    rw,nosuid,relatime,size=10718692k,nr_inodes=2679673,mode=755,inode64,huge=advise
+│ ├─/dev/shm                                  tmpfs             tmpfs       rw,nosuid,nodev,inode64,huge=advise,usrquota
+│ ├─/dev/pts                                  devpts            devpts      rw,nosuid,noexec,relatime,gid=5,mode=600,ptmxmode=000
+│ ├─/dev/mqueue                               mqueue            mqueue      rw,nosuid,nodev,noexec,relatime
+│ └─/dev/hugepages                            hugetlbfs         hugetlbfs   rw,nosuid,nodev,relatime,pagesize=2M
+├─/run                                        run               tmpfs       rw,nosuid,nodev,relatime,mode=755,inode64,huge=advise
+│ ├─/run/credentials/systemd-journald.service none              tmpfs       ro,nosuid,nodev,noexec,relatime,nosymfollow,size=1024k,nr_inodes=1024,mode=700,inode64,huge=advise,noswap
+│ └─/run/user/1001                            tmpfs             tmpfs       rw,nosuid,nodev,relatime,size=2145820k,nr_inodes=536455,mode=700,uid=1001,gid=1001,inode64,huge=advise
+├─/tmp                                        tmpfs             tmpfs       rw,nosuid,nodev,nr_inodes=1048576,inode64,huge=advise,usrquota
+├─/var/log                                    /dev/sda2[/@log]  btrfs       rw,relatime,compress=zstd:3,space_cache=v2,subvolid=258,subvol=/@log
+├─/home                                       /dev/sda2[/@home] btrfs       rw,relatime,compress=zstd:3,space_cache=v2,subvolid=257,subvol=/@home
+├─/var/cache/pacman/pkg                       /dev/sda2[/@pkg]  btrfs       rw,relatime,compress=zstd:3,space_cache=v2,subvolid=259,subvol=/@pkg
+├─/boot                                       /dev/sda1         vfat        rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro
+└─/media/sf_VM-Share                          VM-Share          vboxsf      rw,nodev,relatime

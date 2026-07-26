@@ -1,0 +1,77 @@
+Module                  Size  Used by
+dm_mod                237568  0
+rfkill                 45056  1
+vboxsf                 49152  1
+vboxvideo              45056  0
+drm_vram_helper        28672  1 vboxvideo
+intel_rapl_msr         24576  0
+intel_rapl_common      53248  1 intel_rapl_msr
+intel_uncore_frequency_common    16384  0
+intel_pmc_core        155648  0
+pmt_telemetry          16384  1 intel_pmc_core
+pmt_discovery          20480  1 pmt_telemetry
+pmt_class              20480  2 pmt_telemetry,pmt_discovery
+intel_pmc_ssram_telemetry    16384  1 intel_pmc_core
+intel_vsec             28672  2 intel_pmc_ssram_telemetry,pmt_telemetry
+aesni_intel           106496  0
+snd_intel8x0           57344  0
+gf128mul               12288  1 aesni_intel
+snd_ac97_codec        212992  1 snd_intel8x0
+vfat                   28672  1
+fat                   114688  1 vfat
+ac97_bus               12288  1 snd_ac97_codec
+aead                   16384  1 aesni_intel
+snd_pcm               221184  2 snd_intel8x0,snd_ac97_codec
+rapl                   20480  0
+snd_timer              57344  1 snd_pcm
+snd                   159744  4 snd_intel8x0,snd_timer,snd_ac97_codec,snd_pcm
+i2c_piix4              40960  0
+video                  81920  0
+psmouse               245760  0
+pcspkr                 12288  0
+wmi                    40960  1 video
+joydev                 28672  0
+vboxguest              53248  4 vboxsf
+soundcore              16384  1 snd
+i2c_smbus              20480  1 i2c_piix4
+e1000                 192512  0
+mousedev               28672  0
+mac_hid                12288  0
+xt_hl                  12288  22
+ip6t_rt                16384  3
+ipt_REJECT             12288  1
+nf_reject_ipv4         12288  1 ipt_REJECT
+xt_LOG                 16384  1
+nf_log_syslog          24576  1
+nft_limit              16384  2
+xt_limit               12288  0
+xt_addrtype            12288  4
+xt_tcpudp              20480  60
+xt_conntrack           12288  14
+nf_conntrack          208896  1 xt_conntrack
+nf_defrag_ipv6         24576  1 nf_conntrack
+nf_defrag_ipv4         12288  1 nf_conntrack
+nft_compat             20480  105
+x_tables               73728  9 xt_conntrack,nft_compat,xt_LOG,xt_tcpudp,xt_addrtype,ip6t_rt,ipt_REJECT,xt_limit,xt_hl
+nf_tables             397312  578 nft_compat,nft_limit
+nfnetlink              20480  2 nft_compat,nf_tables
+crypto_user            16384  0
+vsock_loopback         12288  0
+vmw_vsock_virtio_transport_common    61440  1 vsock_loopback
+zram                   73728  1
+vmw_vsock_vmci_transport    49152  0
+842_decompress         20480  1 zram
+vsock                  73728  3 vmw_vsock_virtio_transport_common,vsock_loopback,vmw_vsock_vmci_transport
+842_compress           24576  1 zram
+lz4hc_compress         20480  1 zram
+vmw_vmci              114688  1 vmw_vsock_vmci_transport
+lz4_compress           24576  1 zram
+ata_generic            12288  0
+vmwgfx                491520  2
+pata_acpi              12288  0
+drm_ttm_helper         20480  4 vmwgfx,drm_vram_helper,vboxvideo
+serio_raw              20480  0
+intel_agp              24576  0
+ata_piix               45056  0
+ttm                   151552  3 vmwgfx,drm_vram_helper,drm_ttm_helper
+intel_gtt              32768  1 intel_agp

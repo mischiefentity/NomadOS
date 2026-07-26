@@ -16,9 +16,9 @@
 *.key
 *.p12
 *.pfx
-credentials
+credentials/
 credentials.*
-secrets
+secrets/
 secrets.*
 .env
 .env.*
@@ -44,5 +44,6 @@ NetworkManager/system-connections/
 *~
 .DS_Store
 
+# ArchISO generated build directories
 /work/
 /out/

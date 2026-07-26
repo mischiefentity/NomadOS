@@ -1,0 +1,33 @@
+00:00.0 Host bridge [0600]: Intel Corporation 440FX - 82441FX PMC [Natoma] [8086:1237] (rev 02)
+	Kernel modules: intel_agp
+00:01.0 ISA bridge [0601]: Intel Corporation 82371SB PIIX3 ISA [Natoma/Triton II] [8086:7000]
+00:01.1 IDE interface [0101]: Intel Corporation 82371AB/EB/MB PIIX4 IDE [8086:7111] (rev 01)
+	Kernel driver in use: ata_piix
+	Kernel modules: ata_piix, pata_acpi, ata_generic
+00:02.0 VGA compatible controller [0300]: VMware SVGA II Adapter [15ad:0405]
+	Subsystem: VMware SVGA II Adapter [15ad:0405]
+	Kernel driver in use: vmwgfx
+	Kernel modules: vmwgfx
+00:03.0 Ethernet controller [0200]: Intel Corporation 82540EM Gigabit Ethernet Controller [8086:100e] (rev 02)
+	Subsystem: Intel Corporation PRO/1000 MT Desktop Adapter [8086:001e]
+	Kernel driver in use: e1000
+	Kernel modules: e1000
+00:04.0 System peripheral [0880]: InnoTek Systemberatung GmbH VirtualBox Guest Service [80ee:cafe]
+	Kernel driver in use: vboxguest
+	Kernel modules: vboxguest
+00:05.0 Multimedia audio controller [0401]: Intel Corporation 82801AA AC'97 Audio Controller [8086:2415] (rev 01)
+	Subsystem: Dell Device [1028:0177]
+	Kernel driver in use: snd_intel8x0
+	Kernel modules: snd_intel8x0
+00:06.0 USB controller [0c03]: Apple Inc. KeyLargo/Intrepid USB [106b:003f]
+	Kernel driver in use: ohci-pci
+	Kernel modules: ohci_pci
+00:07.0 Bridge [0680]: Intel Corporation 82371AB/EB/MB PIIX4 ACPI [8086:7113] (rev 08)
+	Kernel driver in use: piix4_smbus
+	Kernel modules: i2c_piix4
+00:0b.0 USB controller [0c03]: Intel Corporation 82801FB/FBM/FR/FW/FRW (ICH6 Family) USB2 EHCI Controller [8086:265c]
+	Kernel driver in use: ehci-pci
+	Kernel modules: ehci_pci
+00:0d.0 SATA controller [0106]: Intel Corporation 82801HM/HEM (ICH8M/ICH8M-E) SATA Controller [AHCI mode] [8086:2829] (rev 02)
+	Kernel driver in use: ahci
+	Kernel modules: ahci

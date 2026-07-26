@@ -1,0 +1,2 @@
+sddm-astronaut-theme
+yay-debug

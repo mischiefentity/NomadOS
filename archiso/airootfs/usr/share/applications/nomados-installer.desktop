@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Install NomadOS
+GenericName=System Installer
+Comment=Install NomadOS onto this computer
+Exec=kitty --title "Install NomadOS" /usr/local/bin/nomados-welcome
+Icon=system-software-install
+Terminal=false
+Categories=System;
+StartupNotify=true

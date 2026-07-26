@@ -25,6 +25,13 @@ if [[ ! -x "$REPO_DIR/scripts/stage-iso-profile.sh" ]]; then
     exit 1
 fi
 
+if [[ ! -x "$REPO_DIR/scripts/iso-preflight-check.sh" ]]; then
+    echo "Error: ISO preflight validator is missing or not executable." >&2
+    exit 1
+fi
+
+"$REPO_DIR/scripts/iso-preflight-check.sh"
+
 sudo rm -rf "$WORK_DIR"
 mkdir -p "$OUT_DIR" "$WORK_DIR"
 

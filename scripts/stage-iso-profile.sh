@@ -26,6 +26,15 @@ rsync -a --delete \
     "$REPO_DIR/dotfiles/awesome/" \
     "$SKEL/.config/awesome/"
 
+# Add the installer welcome screen only to the live session.
+cat >> "$SKEL/.config/awesome/rc.lua" <<'LUA'
+
+-- NomadOS live installer welcome screen
+awful.spawn.once(
+    "kitty --title 'Install NomadOS' /usr/local/bin/nomados-welcome"
+)
+LUA
+
 rsync -a --delete \
     "$REPO_DIR/dotfiles/kitty/" \
     "$SKEL/.config/kitty/"
@@ -80,6 +89,14 @@ mkdir -p "$PAYLOAD/scripts"
 install -Dm755 \
     "$REPO_DIR/scripts/preflight-check.sh" \
     "$PAYLOAD/scripts/preflight-check.sh"
+
+install -Dm755 \
+    "$REPO_DIR/installer/nomados-install.sh" \
+    "$AIROOTFS/usr/local/bin/nomados-install"
+
+install -Dm755 \
+    "$REPO_DIR/installer/nomados-welcome.sh" \
+    "$AIROOTFS/usr/local/bin/nomados-welcome"
 
 install -Dm644 \
     "$REPO_DIR/README.md" \

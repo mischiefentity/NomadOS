@@ -79,6 +79,7 @@ ttf-jetbrains-mono-nerd
 ttf-liberation
 ufw
 unzip
+usbutils
 vim
 virtualbox-guest-utils
 vulkan-intel

@@ -43,3 +43,6 @@ NetworkManager/system-connections/
 *.swo
 *~
 .DS_Store
+
+/work/
+/out/

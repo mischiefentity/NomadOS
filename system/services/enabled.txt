@@ -1,0 +1,9 @@
+bluetooth.service
+grub-btrfsd.service
+NetworkManager.service
+power-profiles-daemon.service
+sddm.service
+snapper-cleanup.timer
+snapper-timeline.timer
+systemd-timesyncd.service
+ufw.service

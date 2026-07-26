@@ -1,0 +1,2 @@
+[blackarch]
+Include = /etc/pacman.d/blackarch-mirrorlist

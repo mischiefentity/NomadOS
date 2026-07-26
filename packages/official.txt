@@ -4,6 +4,7 @@ awesome
 base
 base-devel
 bat
+blackarch-keyring
 blackarch-menus
 blackarch-mirrorlist
 bluez
@@ -42,8 +43,8 @@ linux-headers
 mkinitcpio
 nano
 neovim
-network-manager-applet
 networkmanager
+network-manager-applet
 nodejs
 noto-fonts
 noto-fonts-cjk

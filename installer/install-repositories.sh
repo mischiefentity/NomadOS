@@ -112,4 +112,33 @@ else
 fi
 
 echo
+echo "Replacing temporary BlackArch seed files with package-owned versions..."
+
+OVERWRITE_PATHS='usr/share/pacman/keyrings/blackarch*,etc/pacman.d/blackarch-mirrorlist'
+
+if [[ "$ROOT_DIR" == "/" ]]; then
+    pacman -Sy         --needed         --noconfirm         --overwrite "$OVERWRITE_PATHS"         blackarch-keyring         blackarch-mirrorlist
+
+    pacman-key --populate blackarch
+
+elif [[ -x "$ROOT_DIR/usr/bin/pacman" ]]; then
+    if (( EUID != 0 )); then
+        echo "Root privileges are required for the target system." >&2
+        exit 1
+    fi
+
+    if ! command -v arch-chroot >/dev/null 2>&1; then
+        echo "arch-chroot is required for the target system." >&2
+        exit 1
+    fi
+
+    arch-chroot "$ROOT_DIR"         pacman -Sy         --needed         --noconfirm         --overwrite "$OVERWRITE_PATHS"         blackarch-keyring         blackarch-mirrorlist
+
+    arch-chroot "$ROOT_DIR"         pacman-key --populate blackarch
+else
+    echo "Filesystem-only test detected."
+    echo "BlackArch package ownership conversion was skipped."
+fi
+
+echo
 echo "NomadOS repository configuration installed successfully."

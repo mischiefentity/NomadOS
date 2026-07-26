@@ -1,2 +1,2 @@
-sddm-astronaut-theme
-yay-debug
+# Required AUR packages for NomadOS
+# Add packages here only when they are not available through configured repositories.

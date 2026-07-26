@@ -2,8 +2,10 @@
 set -euo pipefail
 
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-PROFILE_DIR="$REPO_DIR/archiso"
+SOURCE_PROFILE="$REPO_DIR/archiso"
 WORK_DIR="$REPO_DIR/work"
+STAGED_PROFILE="$WORK_DIR/profile"
+BUILD_WORK="$WORK_DIR/build"
 OUT_DIR="$REPO_DIR/out"
 
 if ! command -v mkarchiso >/dev/null 2>&1; then
@@ -12,22 +14,31 @@ if ! command -v mkarchiso >/dev/null 2>&1; then
     exit 1
 fi
 
-if [[ ! -f "$PROFILE_DIR/profiledef.sh" ]]; then
+if [[ ! -f "$SOURCE_PROFILE/profiledef.sh" ]]; then
     echo "Error: ArchISO profile is incomplete."
-    echo "Missing: $PROFILE_DIR/profiledef.sh"
+    echo "Missing: $SOURCE_PROFILE/profiledef.sh"
+    exit 1
+fi
+
+if [[ ! -x "$REPO_DIR/scripts/stage-iso-profile.sh" ]]; then
+    echo "Error: ISO staging script is missing or not executable."
     exit 1
 fi
 
 sudo rm -rf "$WORK_DIR"
-mkdir -p "$OUT_DIR"
+mkdir -p "$OUT_DIR" "$WORK_DIR"
+
+"$REPO_DIR/scripts/stage-iso-profile.sh" \
+    "$STAGED_PROFILE"
 
 sudo mkarchiso \
     -v \
-    -w "$WORK_DIR" \
+    -w "$BUILD_WORK" \
     -o "$OUT_DIR" \
-    "$PROFILE_DIR"
+    "$STAGED_PROFILE"
+
+sudo chown -R "$(id -u):$(id -g)" "$OUT_DIR"
 
 echo
-sudo chown -R "$(id -u):$(id -g)" "$OUT_DIR"
 echo "Build complete."
 echo "ISO files are in: $OUT_DIR"

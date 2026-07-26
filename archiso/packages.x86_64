@@ -107,6 +107,9 @@ pv
 python
 python-pip
 qemu-guest-agent
+qt6-multimedia
+qt6-svg
+qt6-virtualkeyboard
 refind
 reflector
 ripgrep

@@ -1,21 +1,24 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if ! id nomad >/dev/null 2>&1; then
+LIVE_USER="nomad"
+LIVE_HOME="/home/$LIVE_USER"
+
+if ! id "$LIVE_USER" >/dev/null 2>&1; then
     useradd \
         --create-home \
         --groups wheel,audio,video,storage,optical \
-        --shell /bin/bash \
-        nomad
+        --shell /usr/bin/zsh \
+        "$LIVE_USER"
 fi
 
-echo 'nomad:nomad' | chpasswd
+echo "${LIVE_USER}:nomad" | chpasswd
 
-install -Dm440 /dev/stdin /etc/sudoers.d/10-nomados-wheel <<'EOF'
-%wheel ALL=(ALL:ALL) ALL
-EOF
+# Passwordless sudo applies only to the disposable live environment.
+install -Dm440 /dev/stdin /etc/sudoers.d/10-nomados-live <<'SUDOEOF'
+%wheel ALL=(ALL:ALL) NOPASSWD: ALL
+SUDOEOF
 
-chown -R nomad:nomad /home/nomad
+chown -R "$LIVE_USER:$LIVE_USER" "$LIVE_HOME"
 
 touch /var/lib/nomados-live-setup-complete
-EOF

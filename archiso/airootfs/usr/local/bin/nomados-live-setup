@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if ! id nomad >/dev/null 2>&1; then
+    useradd \
+        --create-home \
+        --groups wheel,audio,video,storage,optical \
+        --shell /bin/bash \
+        nomad
+fi
+
+echo 'nomad:nomad' | chpasswd
+
+install -Dm440 /dev/stdin /etc/sudoers.d/10-nomados-wheel <<'EOF'
+%wheel ALL=(ALL:ALL) ALL
+EOF
+
+chown -R nomad:nomad /home/nomad
+
+touch /var/lib/nomados-live-setup-complete
+EOF

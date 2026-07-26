@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2034
 
-iso_name="archlinux"
-iso_label="ARCH_$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y%m)"
-iso_publisher="Arch Linux <https://archlinux.org>"
-iso_application="Arch Linux Live/Rescue DVD"
-iso_version="$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y.%m.%d)"
+iso_name="nomados"
+iso_label="NOMADOS_$(date +%Y%m)"
+iso_publisher="NomadOS Project <https://github.com/mischiefentity/NomadOS>"
+iso_application="NomadOS Live Environment"
+iso_version="0.1.0"
 install_dir="arch"
 buildmodes=('iso')
 bootmodes=('bios.syslinux'

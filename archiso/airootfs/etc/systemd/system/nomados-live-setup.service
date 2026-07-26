@@ -1,0 +1,12 @@
+[Unit]
+Description=Prepare the NomadOS live account
+Before=sddm.service
+ConditionPathExists=!/var/lib/nomados-live-setup-complete
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/nomados-live-setup
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

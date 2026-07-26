@@ -28,5 +28,6 @@ sudo mkarchiso \
     "$PROFILE_DIR"
 
 echo
+sudo chown -R "$(id -u):$(id -g)" "$OUT_DIR"
 echo "Build complete."
 echo "ISO files are in: $OUT_DIR"

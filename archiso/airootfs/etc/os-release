@@ -1,0 +1,11 @@
+NAME="NomadOS"
+PRETTY_NAME="NomadOS 0.1.0"
+ID=nomados
+ID_LIKE=arch
+BUILD_ID=rolling
+ANSI_COLOR="38;2;217;154;98"
+HOME_URL="https://github.com/mischiefentity/NomadOS"
+DOCUMENTATION_URL="https://github.com/mischiefentity/NomadOS"
+SUPPORT_URL="https://github.com/mischiefentity/NomadOS/issues"
+BUG_REPORT_URL="https://github.com/mischiefentity/NomadOS/issues"
+LOGO=archlinux-logo
